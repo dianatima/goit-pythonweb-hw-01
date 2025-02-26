@@ -1,4 +1,7 @@
 from abc import ABC, abstractmethod
+import logging
+
+logging.basicConfig(level=logging.INFO, format='%(message)s')
 
 class Vehicle(ABC):
     def __init__(self, make: str, model: str, region: str):
@@ -12,11 +15,11 @@ class Vehicle(ABC):
 
 class Car(Vehicle):
     def start_engine(self) -> None:
-        print(f"{self.make} {self.model} {self.region}: Двигун запущено")
+        logging.info(f"{self.make} {self.model} {self.region}: Двигун запущено")
 
 class Motorcycle(Vehicle):
     def start_engine(self) -> None:
-        print(f"{self.make} {self.model} {self.region}: Мотор заведено")
+        logging.info(f"{self.make} {self.model} {self.region}: Мотор заведено")
 
 class VehicleFactory(ABC):
     @abstractmethod
