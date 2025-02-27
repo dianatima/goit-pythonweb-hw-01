@@ -2,7 +2,8 @@ from abc import ABC, abstractmethod
 from typing import List
 import logging
 
-logging.basicConfig(level=logging.INFO, format='%(message)s')
+logging.basicConfig(level=logging.INFO, format="%(message)s")
+
 
 class Book(ABC):
     def __init__(self, title: str, author: str, year: str):
@@ -12,6 +13,7 @@ class Book(ABC):
 
     def __str__(self):
         return f"Title: {self.title}, Author: {self.author}, Year: {self.year}"
+
 
 class LibraryInterface(ABC):
     @abstractmethod
@@ -25,6 +27,7 @@ class LibraryInterface(ABC):
     @abstractmethod
     def show_books(self) -> None:
         pass
+
 
 class Library(LibraryInterface):
     def __init__(self):
@@ -40,6 +43,7 @@ class Library(LibraryInterface):
         for book in self.books:
             logging.info(book)
 
+
 class LibraryManager:
     def __init__(self, library: LibraryInterface):
         self.library = library
@@ -52,8 +56,7 @@ class LibraryManager:
         self.library.remove_book(title)
 
     def show_books(self) -> None:
-         self.library.show_books()
-
+        self.library.show_books()
 
 
 def main():
@@ -78,6 +81,7 @@ def main():
                 break
             case _:
                 logging.info("Invalid command. Please try again.")
+
 
 if __name__ == "__main__":
     main()
